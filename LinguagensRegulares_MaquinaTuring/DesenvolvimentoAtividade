@@ -1,1 +1,16 @@
+Etapa 1 – Introdução
+1. O que é uma Máquina de Turing?
+Uma Máquina de Turing (MT) é um modelo matemático abstrato de computação proposto por Alan Turing em 1936. Consiste numa fita infinita dividida em células (onde podem ser lidos e escritos símbolos), uma cabeça de leitura/escrita que se move para a esquerda ou para a direita, um conjunto finito de estados internos e uma tabela de regras de transição. É o modelo fundamental que define o conceito formal de algoritmo e de o que é "computável".   
 
+2. Quais são os principais componentes de uma Máquina de Turing?
+Fita Infinita: Serve como memória principal para armazenar a entrada, dados intermédios e a saída.   
+Cabeça de Leitura/Escrita: Lê o símbolo atual da fita, escreve novos símbolos e desloca-se uma posição para a esquerda (L) ou para a direita (R).   
+Registador de Estado (Estado Atual): Guarda o estado interno no qual a máquina se encontra a cada momento.   
+Alfabeto: Conjunto de símbolos aceites pela máquina (incluindo o símbolo de espaço em branco/vazio _ ou B).   
+Função/Tabela de Transição ($\delta$): O conjunto de regras condicionais que diz à máquina o que fazer: com base no estado atual e no símbolo lido, define o novo símbolo a escrever, a direção do movimento da cabeça e o próximo estado.   
+
+3. Qual é a importância das Máquinas de Turing para a computação?
+A Máquina de Turing é a base teórica de toda a ciência da computação moderna. Ela formalizou rigorosamente o que significa um problema ser "resolvível por computador" (computabilidade). Além disso, fundamenta a Tese de Church-Turing, que estabelece que qualquer algoritmo executável por um computador moderno (ou qualquer modelo computacional viável) pode ser simulado por uma Máquina de Turing.   
+
+4. Qual é a relação entre Máquina de Turing e algoritmo?
+Pela Tese de Church-Turing, um algoritmo é equivalente a uma Máquina de Turing que termina para todas as entradas. Se existe um procedimento passo a passo e finito para resolver um problema (um algoritmo), então é possível construir uma Máquina de Turing para executá-lo. Se algo não puder ser computado por uma Máquina de Turing, não existe nenhum algoritmo no mundo capaz de o resolver.
