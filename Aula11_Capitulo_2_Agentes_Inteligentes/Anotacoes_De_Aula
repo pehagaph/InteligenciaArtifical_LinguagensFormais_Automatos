@@ -1,0 +1,127 @@
+# 📚 Anotações de Estudo: Inteligência Artificial — Agentes Inteligentes
+
+**Disciplina:** Inteligência Artificial Moderna[cite: 34]  
+**Instituição:** Centro Universitário UDF[cite: 34]  
+**Docente:** Profa. Kadidja Valéria[cite: 34]  
+**Base do Conteúdo:** Russell & Norvig — Capítulo 2: *Agentes Inteligentes*[cite: 1, 72]  
+
+---
+
+## 📌 1. Conceito Fundamental de Agente e Ambiente
+
+* **Agente:** Qualquer entidade capaz de perceber o seu ambiente por meio de **sensores** e atuar sobre esse ambiente através de **atuadores**[cite: 1, 36].
+* **Estrutura de Agente:** A relação base que define um agente artificial é dada por:
+  $$\text{Agente} = \text{Arquitetura} + \text{Programa}$$[cite: 14, 58]
+  * **Arquitetura:** Dispositivo computacional/físico munido de sensores e atuadores[cite: 14].
+  * **Programa:** Algoritmo executado na arquitetura para mapear percepções em ações[cite: 1, 14, 39].
+* **Percepção e Histórico:**
+  * **Percepção ($P$):** Entrada sensorial recebida pelo agente num instante exato[cite: 1, 38].
+  * **Histórico de Percepções ($P^*$):** A sequência completa de todas as percepções que o agente já recebeu desde o início[cite: 1, 38].
+* **Função de Agente vs. Programa de Agente:**
+  * **Função de Agente ($f: P^* \to A$):** Mapeamento matemático abstrato que associa qualquer histórico de percepções a uma ação[cite: 1, 39].
+  * **Programa de Agente:** Implementação concreta do algoritmo que roda no sistema físico, recebendo a percepção atual e podendo manter um estado interno/memória[cite: 1, 14, 39].
+
+---
+
+## 🎯 2. Racionalidade e Desempenho
+
+### 2.1 Medida de Desempenho
+* Avalia externamente a qualidade do comportamento do agente de acordo com as mudanças causadas nos **estados do ambiente** (e não nos estados internos do agente)[cite: 4, 64].
+* **Regra de Projeto:** A medida de desempenho deve ser definida com base no **resultado realmente desejado no ambiente**, e não no comportamento esperado do agente (ex.: premiar chão limpo em vez do volume de sujidade aspirada)[cite: 4, 42].
+
+### 2.2 Agente Racional
+Para cada sequência de percepções possível, um agente racional escolhe a ação que **maximiza a sua medida de desempenho esperada**, com base nas evidências fornecidas pela sequência de percepções e pelo seu conhecimento interno prévio[cite: 5, 43].
+* **Fatores da Racionalidade:**
+  1. A medida de desempenho[cite: 5, 44].
+  2. O conhecimento prévio sobre o ambiente[cite: 5, 44].
+  3. As ações executáveis[cite: 5, 44].
+  4. O histórico de percepções até ao momento[cite: 5, 44].
+
+### 2.3 Racionalidade vs. Onisciência
+* **Racionalidade $\neq$ Perfeição/Onisciência:** A racionalidade maximiza o *desempenho esperado* com as informações disponíveis no momento; a onisciência exigiria saber o *resultado real/futuro*, algo inatingível no mundo real[cite: 5, 6, 45].
+* **Coleta de Informações e Aprendizagem:** Agentes racionais devem realizar ações para explorar o ambiente, recolher dados novos e aprender com a experiência, aumentando a sua **autonomia** ao longo do tempo[cite: 6, 7, 46].
+
+---
+
+## 🛠️ 3. Especificação PEAS do Ambiente de Tarefa
+
+Ao projetar um agente, o primeiro passo é definir o ambiente de tarefa através da sigla **PEAS**[cite: 7, 47, 71]:
+
+* **P** (*Performance* / Medida de Desempenho): Critérios de sucesso[cite: 7, 47].
+* **E** (*Environment* / Ambiente): Elementos externos e contexto do mundo[cite: 7, 47].
+* **A** (*Actuators* / Atuadores): Dispositivos que executam as ações[cite: 7, 47].
+* **S** (*Sensors* / Sensores): Dispositivos que captam as percepções[cite: 7, 47].
+
+### Exemplo: Motorista de Táxi Automatizado[cite: 7, 8]
+* **P:** Viagem segura, rápida, cumprimento das leis, conforto e maximização do lucro[cite: 8].
+* **E:** Estradas, pedestres, outros veículos, tráfego, condições meteorológicas e clientes[cite: 8].
+* **A:** Direção, acelerador, travão, buzina, sinalizadores e ecrã/sintetizador de voz[cite: 8].
+* **S:** Câmaras, sonar, velocímetro, GPS, acelerómetro, teclado e sensores do motor[cite: 8].
+
+---
+
+## 🌐 4. Propriedades dos Ambientes de Tarefa
+
+Os ambientes de tarefa dividem-se ao longo de 7 dimensões fundamentais[cite: 10, 28]:
+
+1. **Observabilidade:**
+   * *Completamente Observável:* Os sensores captam todos os aspetos relevantes para a decisão[cite: 10, 50].
+   * *Parcialmente Observável:* Há ruído, sensores imprecisos ou partes ocultas do estado[cite: 10, 50].
+2. **Número de Agentes:**
+   * *Agente Único:* O ambiente não possui outros agentes tomadores de decisão[cite: 10, 51].
+   * *Multiagente:* O resultado depende das ações de outros agentes (pode ser **competitivo** ou **cooperativo**)[cite: 10, 11, 51].
+3. **Previsibilidade:**
+   * *Determinístico:* O próximo estado do ambiente é totalmente determinado pelo estado atual e pela ação[cite: 11, 52].
+   * *Estocástico:* Há incerteza, volatilidade ou probabilidades nos resultados das ações[cite: 11, 52].
+4. **Dependência entre Decisões:**
+   * *Episódico:* A experiência é dividida em episódios atómicos e independentes[cite: 11, 53].
+   * *Sequencial:* A decisão atual afeta as decisões e oportunidades futuras[cite: 11, 53].
+5. **Mudança durante a Decisão:**
+   * *Estático:* O ambiente não muda enquanto o agente está a deliberar[cite: 11, 54].
+   * *Dinâmico:* O ambiente altera-se continuamente enquanto o agente decide[cite: 11, 12, 54].
+   * *Semidinâmico:* O ambiente não muda com o tempo, mas o desempenho do agente cai com a demora[cite: 12, 54].
+6. **Natureza dos Elementos:**
+   * *Discreto:* Número finito e bem definido de estados, percepções e ações[cite: 12, 55].
+   * *Contínuo:* Variáveis de estado, tempo ou controlo variam suavemente em valores reais[cite: 12, 55].
+7. **Conhecimento do Funcionamento:**
+   * *Conhecido:* O agente (ou projetista) conhece as "regras do jogo" e os seus efeitos[cite: 12, 56].
+   * *Desconhecido:* O agente precisa de explorar/aprender como o ambiente reage às ações[cite: 12, 56].
+
+---
+
+## 🏗️ 5. Tipos de Programas de Agentes
+
+### 1. Agente Reativo Simples
+* Seleciona ações baseando-se apenas na **percepção atual**, utilizando regras do tipo **condição-ação**[cite: 16, 59].
+* **Limitação:** Funciona apenas em ambientes totalmente observáveis; em caso contrário, pode entrar em laços infinitos[cite: 17, 60].
+
+### 2. Agente Reativo Baseado em Modelos
+* Mantém um **estado interno** que reflete o histórico de percepções para acompanhar aspetos não observados do mundo[cite: 18, 61].
+* Utiliza um **modelo do mundo** que descreve:
+  * Como o mundo evolui de forma independente[cite: 19, 61].
+  * Como as ações do próprio agente afetam o mundo[cite: 19, 61].
+
+### 3. Agente Baseado em Objetivos
+* Combina as informações de estado interno com **metas/objetivos específicos**[cite: 20, 62].
+* Utiliza algoritmos de **busca e planeamento** para projetar sequências de ações futuras que alcancem os objetivos[cite: 21, 62].
+
+### 4. Agente Baseado em Utilidade
+* Internaliza a medida de desempenho através de uma **função de utilidade** que mede o "grau de satisfação/felicidade" de estar em cada estado[cite: 22, 63, 64].
+* Permite tomar decisões racionais ponderando riscos, custos e múltiplos objetivos conflitantes sob **incerteza**[cite: 22, 63].
+
+### 5. Agente com Aprendizagem
+Estruturado em 4 componentes conceituais para melhorar o desempenho ao longo do tempo[cite: 24, 65]:
+* **Elemento de Desempenho:** Responsável por selecionar ações externas[cite: 24, 65].
+* **Crítico:** Avalia o comportamento do agente comparando-o com um padrão fixo de desempenho[cite: 24, 65].
+* **Elemento de Aprendizado:** Promove mudanças e otimizações nos componentes do agente com base no feedback do crítico[cite: 24, 65].
+* **Gerador de Problemas:** Sugere ações exploratórias para obter novas experiências e informações[cite: 24, 25, 65].
+
+---
+
+## 🔬 6. Representação Interna do Conhecimento
+
+A complexidade e o poder expressivo das representações internas do estado variam ao longo de um eixo de 3 níveis[cite: 26, 27]:
+
+1. **Atómica:** Cada estado é uma "caixa preta" sem estrutura interna (ex.: algoritmos de busca e cadeias de Markov)[cite: 26].
+2. **Fatorada:** Cada estado é dividido num vetor de atributos ou variáveis com valores (ex.: redes bayesianas, problemas de satisfação de restrições)[cite: 26, 27].
+3. **Estruturada:** O estado é descrito explicitamente por objetos, os seus atributos e os seus relacionamentos complexos (ex.: lógica de primeira ordem, bases de dados relacionais)[cite: 27].
