@@ -304,7 +304,3 @@
 * **Limitação da simplificação:**  
   Modelar um agente por autômatos de estados finitos assume um ambiente discreto e simplificado. No futebol real, variáveis como velocidade, força física, trajetória parabólica da bola, vento e desgaste mecânico são contínuas e altamente estocásticas, tornando impossível prever todas as transições de estado com regras discretas rígidas sem perder precisão operacional.
 
----
-
-## Referências
-* RUSSELL, Stuart J.; NORVIG, Peter. **Inteligência Artificial: uma abordagem moderna**. 4. ed. Rio de Janeiro: GEN LTC, 2022.
